@@ -1,0 +1,13 @@
+package com.example.controller;
+
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("{{ base_path }}{{ controller.route }}")
+public class {{ controller.name }} {
+
+    @{{ controller.method | capitalize }}Mapping
+    public String getGreeting() {
+        return "{{ controller.response.value }}";
+    }
+}
