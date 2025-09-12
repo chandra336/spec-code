@@ -1,0 +1,22 @@
+import { Component } from '@angular/core';
+import { {{ component.name }}Service } from './{{ component.name | lower }}.service';
+
+@Component({
+  selector: 'app-{{ component.name | lower }}',
+  templateUrl: './{{ component.name | lower }}.component.html',
+})
+export class {{ component.name }}Component {
+  {% for binding in component.bindings %}
+  {{ binding.name }}: {{ binding.type }};
+  {% endfor %}
+
+  constructor(private service: {{ component.name }}Service) {
+    this.loadData();
+  }
+
+  loadData() {
+    this.service.getData().subscribe(data => {
+      this.message = data;
+    });
+  }
+}
